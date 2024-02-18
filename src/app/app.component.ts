@@ -4,6 +4,9 @@ import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
+import { UserDTO } from './DTOs/UserDTO';
+import { json } from 'stream/consumers';
+import { AccountService } from './services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +14,7 @@ import { NavComponent } from './nav/nav.component';
   imports: [RouterOutlet, HttpClientModule, FormsModule, CommonModule, NavComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  providers: [AccountService]
 })
 export class AppComponent implements OnInit {
 
@@ -18,10 +22,18 @@ export class AppComponent implements OnInit {
   title = 'DatingApp';
 
 
-  constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
+  constructor(private http: HttpClient, private accounService : AccountService) { }
+  
+  ngOnInit(): void 
+  {
     this.getUsers();
+    this.setCurrentUser();
+  }
+
+  setCurrentUser()
+  {
+    const user : UserDTO = JSON.parse(localStorage.getItem('user') || "");
+    this.accounService.setCurrentUser(user);
   }
 
   getUsers(){

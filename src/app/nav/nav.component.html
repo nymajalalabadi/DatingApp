@@ -17,7 +17,7 @@
           </li>
         </ul>
 
-        <div *ngIf="isLoggin" class="dropdown show">
+        <div *ngIf="isLogin" class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
               خوش آمدید
             </a>
@@ -28,7 +28,7 @@
             </div>
           </div>
     
-        <form *ngIf="!isLoggin" #loginForm = "ngForm" class="d-flex" (ngSubmit)="login()">
+        <form *ngIf="!isLogin" #loginForm = "ngForm" class="d-flex" (ngSubmit)="login()">
           <input class="form-control me-2" name="username" [(ngModel)]="model.UserName" type="text" placeholder="UserName" aria-label="UserName">
           <input class="form-control me-2" name="password" [(ngModel)]="model.password" type="password" placeholder="Password" aria-label="Password">
           <button class="btn btn-outline-success" type="submit">Login</button>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../services/account.service';
 import { error } from 'console';
@@ -13,34 +13,46 @@ import { error } from 'console';
   providers: [AccountService]
 })
 
-export class NavComponent {
+export class NavComponent implements OnInit {
   
   model: any = {};
 
-  isLoggin : boolean = false;
+  isLogin : boolean = true;
 
-  constructor(private accountService:AccountService){
+  constructor(private accountService:AccountService)
+  {
+
+  }
+
+  ngOnInit(): void 
+  {
+    this.getCurrentUser();
   }
 
   login(){
     this.accountService.login(this.model).subscribe(data =>
     {
       console.log(data);
-      this.isLoggin = true;
+      this.isLogin = true;
     },error=>{
       console.log(error);
     });
   }
 
-  logout()
+  logout() {
+    this.accountService.logout();
+    this.isLogin=false;
+  }
+
+  getCurrentUser()
   {
-    this.accountService.logout().subscribe(data => 
+    this.accountService.currentUser.subscribe((user) =>
     {
-      console.log(data);
-      this.isLoggin = false;
-    },error=>{
+      this.isLogin=!!user;
+    },error => 
+    {
       console.log(error);
-    });
+    })
   }
 
 }
