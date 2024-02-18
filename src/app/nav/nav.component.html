@@ -16,7 +16,19 @@
             <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Dashbord</a>
           </li>
         </ul>
-        <form #loginForm = "ngForm" class="d-flex" (ngSubmit)="login()">
+
+        <div *ngIf="isLoggin" class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+              خوش آمدید
+            </a>
+    
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">ویرایش پروفایل</a>
+              <a class="dropdown-item" href="#">خروج</a>
+            </div>
+          </div>
+    
+        <form *ngIf="!isLoggin" #loginForm = "ngForm" class="d-flex" (ngSubmit)="login()">
           <input class="form-control me-2" name="username" [(ngModel)]="model.UserName" type="text" placeholder="UserName" aria-label="UserName">
           <input class="form-control me-2" name="password" [(ngModel)]="model.password" type="password" placeholder="Password" aria-label="Password">
           <button class="btn btn-outline-success" type="submit">Login</button>
