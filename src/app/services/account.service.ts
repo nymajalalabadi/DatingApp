@@ -9,11 +9,15 @@ export class AccountService {
 
   baseUrl : string = "http://localhost:5250/api/";
 
-  constructor(private http : HttpClient) { }
+  constructor(private httpClient:HttpClient) { }
 
   login(model : any)
   {
-    return this.http.post(`${this.baseUrl}Account/login`, model);
+    return this.httpClient.post(`${this.baseUrl}account/login`,model);
   }
   
+  logout()
+  {
+    return this.httpClient.get(`${this.baseUrl}account/logout`);
+  }
 }

@@ -9,26 +9,38 @@ import { error } from 'console';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+  styleUrl: './nav.component.css',
+  providers: [AccountService]
 })
 
 export class NavComponent {
   
-  model : any = {};
+  model: any = {};
 
-  constructor(private accountService : AccountService) 
-  {
-    
+  isLoggin : boolean = false;
+
+  constructor(private accountService:AccountService){
   }
 
-  login()
+  login(){
+    this.accountService.login(this.model).subscribe(data =>
+    {
+      console.log(data);
+      this.isLoggin = true;
+    },error=>{
+      console.log(error);
+    });
+  }
+
+  logout()
   {
-    this.accountService.login(this.model).subscribe(data => 
-      {console.log(data)},
-      error => {
-        console.log(error);
-      }
-      );
+    this.accountService.logout().subscribe(data => 
+    {
+      console.log(data);
+      this.isLoggin = false;
+    },error=>{
+      console.log(error);
+    });
   }
 
 }
