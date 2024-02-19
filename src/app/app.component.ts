@@ -7,11 +7,12 @@ import { NavComponent } from './nav/nav.component';
 import { UserDTO } from './DTOs/UserDTO';
 import { json } from 'stream/consumers';
 import { AccountService } from './services/account.service';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HttpClientModule, FormsModule, CommonModule, NavComponent],
+  imports: [RouterOutlet, HttpClientModule, FormsModule, CommonModule, NavComponent, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [AccountService]

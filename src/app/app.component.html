@@ -1,19 +1,11 @@
 
 <app-nav></app-nav>
-<main class="main">
-  <div class="content">
-    <div class="left-side">
-      <h1>
-        my user : 
-      </h1> 
-      <ul>
-        <li *ngFor="let user of users">
-          {{user.userId}} - {{user.email}} - {{user.userName}}
-        </li>
-      </ul>
-      </div>
-    </div>
-</main>
+
+<div class="contect" role="main">
+
+  <app-home></app-home>
+
+</div>
 
 
 <router-outlet />

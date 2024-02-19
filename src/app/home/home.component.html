@@ -1,1 +1,17 @@
-<p>home works!</p>
+<div class="container mt-5">
+    <div class="text-center" *ngIf="!registerMode">
+        <h1>دوست خود را انتخاب کنید</h1>
+        <p>با استفاده از این صحفه می توانید دوست خود را انتخاب کنید</p>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary btn-lg ml-2">ثبت نام</button>
+        <button class="btn btn-info btn-lg ml-2">نمایش بیشتر ...</button>
+    </div>
+    <div class="container" *ngIf="registerMode">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                فورم مربوط به ثبت نام
+            </div>
+        </div>
+    </div>
+</div>
