@@ -8,11 +8,12 @@ import { UserDTO } from './DTOs/UserDTO';
 import { json } from 'stream/consumers';
 import { AccountService } from './services/account.service';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HttpClientModule, FormsModule, CommonModule, NavComponent, HomeComponent],
+  imports: [RouterOutlet, HttpClientModule, FormsModule, CommonModule, NavComponent, HomeComponent, RegisterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [AccountService]
