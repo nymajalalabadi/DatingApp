@@ -41,6 +41,4 @@ export class NavComponent implements OnInit {
     this.accountService.logout();
   }
 
-  
-
 }
