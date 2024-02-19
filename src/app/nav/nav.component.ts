@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../services/account.service';
 import { error } from 'console';
+import { Observable } from 'rxjs';
+import { UserDTO } from '../DTOs/UserDTO';
 
 @Component({
   selector: 'app-nav',
@@ -17,23 +19,19 @@ export class NavComponent implements OnInit {
   
   model: any = {};
 
-  isLogin : boolean = true;
-
-  constructor(private accountService:AccountService)
+  constructor(public accountService:AccountService)
   {
 
   }
 
   ngOnInit(): void 
   {
-    this.getCurrentUser();
   }
 
   login(){
     this.accountService.login(this.model).subscribe(data =>
     {
       console.log(data);
-      this.isLogin = true;
     },error=>{
       console.log(error);
     });
@@ -41,18 +39,8 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
-    this.isLogin=false;
   }
 
-  getCurrentUser()
-  {
-    this.accountService.currentUser.subscribe((user) =>
-    {
-      this.isLogin=!!user;
-    },error => 
-    {
-      console.log(error);
-    })
-  }
+  
 
 }
