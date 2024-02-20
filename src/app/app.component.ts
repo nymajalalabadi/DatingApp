@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
@@ -17,7 +17,7 @@ import { MessageComponent } from './message/message.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HttpClientModule, FormsModule, CommonModule, NavComponent, HomeComponent, RegisterComponent, MemberDetailComponent, MemberListComponent, ListsComponent, MessageComponent],
+  imports: [RouterOutlet, RouterModule, HttpClientModule, FormsModule, CommonModule, NavComponent, HomeComponent, RegisterComponent, MemberDetailComponent, MemberListComponent, ListsComponent, MessageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [AccountService]
