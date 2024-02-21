@@ -1,38 +1,44 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Users</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Message</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Dashbord</a>
-          </li>
-        </ul>
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#">DatingApp</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/members" routerLinkActive="active">Matches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
+        </li>
+      </ul>
 
-        <div *ngIf="accountService.currentUser| async" class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
-              خوش آمدید
-            </a>
-    
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">ویرایش پروفایل</a>
-              <a class="dropdown-item" href="#">خروج</a>
-            </div>
-          </div>
-    
-        <form *ngIf="(accountService.currentUser| async) == null" #loginForm = "ngForm" class="d-flex" (ngSubmit)="login()">
-          <input class="form-control me-2" name="username" [(ngModel)]="model.UserName" type="text" placeholder="UserName" aria-label="UserName">
-          <input class="form-control me-2" name="password" [(ngModel)]="model.password" type="password" placeholder="Password" aria-label="Password">
-          <button class="btn btn-outline-success" type="submit">Login</button>
-        </form>
+
+      <div *ngIf="accountService.currentUser | async" class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          خوش آمدید
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="#">ویرایش پروفایل</a>
+          <a class="dropdown-item" href="#">خروج</a>
+        </div>
       </div>
+
+      <form *ngIf="(accountService.currentUser | async) ==null" class="d-flex" (ngSubmit)="login()">
+        <input name="username" [(ngModel)]="model.userName" class="form-control me-2" type="text" placeholder="Username"
+               aria-label="Username">
+        <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="Password"
+               placeholder="Password" aria-label="Password">
+        <button class="btn btn-outline-success" type="submit">Login</button>
+      </form>
     </div>
+  </div>
 </nav>

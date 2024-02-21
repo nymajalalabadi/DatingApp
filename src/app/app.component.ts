@@ -13,15 +13,17 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessageComponent } from './message/message.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, HttpClientModule, FormsModule, CommonModule, NavComponent, HomeComponent, RegisterComponent, MemberDetailComponent, MemberListComponent, ListsComponent, MessageComponent],
+  imports: [RouterOutlet, RouterModule,HttpClientModule ,FormsModule, CommonModule, NavComponent, HomeComponent, RegisterComponent, MemberDetailComponent, MemberListComponent, ListsComponent, MessageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [AccountService]
 })
+
 export class AppComponent implements OnInit {
 
   users: any;

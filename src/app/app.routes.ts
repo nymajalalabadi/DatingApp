@@ -6,11 +6,13 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { ListsComponent } from './lists/lists.component';
 import { MessageComponent } from './message/message.component';
 import { NgModule } from '@angular/core';
+import { AuthGuard } from './_guards/auth.guard';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 export const routes: Routes = 
 [
     { path: '', component: HomeComponent },
-    { path: 'members', component: MemberListComponent },
+    { path: 'members', component: MemberListComponent,canActivate:[AuthGuard] },
     { path: 'members/:id', component: MemberDetailComponent },
     { path: 'lists', component: ListsComponent },
     { path: 'messages', component: MessageComponent },
@@ -19,8 +21,13 @@ export const routes: Routes =
 ];
 
 @NgModule({
+    declarations: [
+      ],
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        ToastrModule.forRoot({
+            positionClass:'toast-bottom-right'
+          })
     ],
     exports: [
         RouterModule
