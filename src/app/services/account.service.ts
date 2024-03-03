@@ -23,7 +23,8 @@ export class AccountService {
 
         console.log(result);
 
-        if (result.isSuccess && result.data != undefined) {
+        if (result.isSuccess && result.data != undefined) 
+        {
           localStorage.setItem('user', JSON.stringify(result.data));
           this.currentUserSource.next(result.data);
         }
