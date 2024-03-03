@@ -1,4 +1,4 @@
-import { Routes, RouterModule  } from '@angular/router';
+import { Routes, RouterModule, RouterOutlet  } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
@@ -25,9 +25,6 @@ export const routes: Routes =
       ],
     imports: [
         RouterModule.forRoot(routes),
-        ToastrModule.forRoot({
-            positionClass:'toast-bottom-right'
-          })
     ],
     exports: [
         RouterModule
