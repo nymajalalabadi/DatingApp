@@ -1,8 +1,8 @@
 class LoginDTO
 {
-    userName:string = "";
+    Email:string = "";
 
-    password:string = "";
+    Password:string = "";
 }
   
 export default LoginDTO;

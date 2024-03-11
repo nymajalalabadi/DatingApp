@@ -11,7 +11,7 @@ export class AccountService {
 
   baseUrl : string = "http://localhost:5250/api/";
 
-  private currentUserSource = new ReplaySubject<UserDTO>();
+  private currentUserSource = new ReplaySubject<UserDTO>(1);
 
   currentUser = this.currentUserSource.asObservable();
 
@@ -60,7 +60,10 @@ export class AccountService {
 
   setCurrentUser(user:UserDTO)
   {
-    this.currentUserSource.next(user);
+    if(user != null && user.token !== null && user.token !== undefined && user.token !== '')
+    {
+      this.currentUserSource.next(user);
+    }
   }
 
 }

@@ -30,7 +30,10 @@ export class AppComponent implements OnInit {
   title = 'DatingApp';
 
 
-  constructor(private http: HttpClient, private accounService : AccountService) { }
+  constructor(private http: HttpClient, private accounService : AccountService) 
+  {
+
+  }
   
   ngOnInit(): void 
   {

@@ -33,9 +33,9 @@
       </div>
 
       <form *ngIf="(accountService.currentUser | async) ==null" class="d-flex" (ngSubmit)="login()">
-        <input name="username" [(ngModel)]="model.userName" class="form-control me-2" type="text" placeholder="Username"
-               aria-label="Username">
-        <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="Password"
+        <input name="Email" [(ngModel)]="model.Email" class="form-control me-2" type="text" placeholder="Email"
+               aria-label="Email">
+        <input name="Password" [(ngModel)]="model.Password" class="form-control me-2" type="Password"
                placeholder="Password" aria-label="Password">
         <button class="btn btn-outline-success" type="submit">Login</button>
       </form>
