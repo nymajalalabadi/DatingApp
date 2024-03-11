@@ -1,9 +1,9 @@
 class LoginDTO
 {
-    userName:string|undefined;
+    userName:string = "";
 
-    password:string|undefined;
-  }
+    password:string = "";
+}
   
-  export default LoginDTO;
+export default LoginDTO;
   

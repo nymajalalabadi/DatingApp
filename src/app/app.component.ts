@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
 
   setCurrentUser()
   {
-    const user : UserDTO = JSON.parse(localStorage.getItem('user') || "");
+    const user : UserDTO = JSON.parse(localStorage.getItem('user') || "{}");
     this.accounService.setCurrentUser(user);
   }
 

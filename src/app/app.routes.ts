@@ -25,6 +25,9 @@ export const routes: Routes =
       ],
     imports: [
         RouterModule.forRoot(routes),
+        ToastrModule.forRoot({
+            positionClass: 'toast-bottom-right'
+          })
     ],
     exports: [
         RouterModule

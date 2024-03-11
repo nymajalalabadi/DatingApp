@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../services/account.service';
 import { error } from 'console';
+import RegisterDTO from '../DTOs/account/RegisterDTO';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ import { error } from 'console';
 })
 export class RegisterComponent {
 
-  model : any = {};
+  model : RegisterDTO = new RegisterDTO;
 
   constructor(private accountService:AccountService)
   {
@@ -36,4 +37,5 @@ export class RegisterComponent {
   {
     this.cancelRegister.emit(false);
   }
+
 }

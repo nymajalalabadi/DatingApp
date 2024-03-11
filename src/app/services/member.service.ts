@@ -7,7 +7,7 @@ import { MemberDTO } from '../DTOs/member/MemberDTO';
 const httpOptions = {
   headers : new HttpHeaders
   ({
-      Authorization : 'Beaber'+JSON.parse(localStorage.getItem('user')|| '').token
+      Authorization : 'Beaber'+JSON.parse(localStorage.getItem('user')|| '{}').token
   })
 }
 

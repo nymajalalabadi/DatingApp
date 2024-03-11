@@ -4,10 +4,13 @@
             <h2 class="text-center text-primary">ثبت نام</h2>
             <hr>
             <div class="form-group mb-2">
-                <input type="text" class="form-control" name="userName" placeholder="نام کابری" />
+                <input type="text" class="form-control" name="email" [(ngModel)]="model.email" placeholder="ایمیل" />
             </div>
             <div class="form-group mb-2">
-                <input type="password" class="form-control" name="password" placeholder="کلمه عبور" />
+                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" placeholder="کلمه عبور" />
+            </div>
+            <div class="form-group mb-2">
+                <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="model.confirmPassword" placeholder="تکرار کلمه عبور" />
             </div>
             <div class="form-group text-center">
                 <button class="btn btn-success mr-2" type="submit">ثبت نام</button>

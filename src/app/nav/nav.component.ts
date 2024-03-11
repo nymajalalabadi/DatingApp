@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { UserDTO } from '../DTOs/UserDTO';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import LoginDTO from '../DTOs/account/LoginDTO';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 export class NavComponent implements OnInit {
   
-  model: any = {};
+  model: LoginDTO = new LoginDTO;
 
   constructor(public accountService:AccountService, private router : Router)
   {
