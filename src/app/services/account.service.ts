@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map,ReplaySubject } from 'rxjs';
 import { UserDTO } from '../DTOs/UserDTO';
+import LoginDTO from '../DTOs/account/LoginDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -35,16 +36,12 @@ export class AccountService {
   }
 
 
-  login(model : any)
-  {
-    return this.httpClient.post(`${this.baseUrl}account/login`, model).pipe(map((response) =>
-    {
+  login(model: LoginDTO) {
+    return this.httpClient.post(`${this.baseUrl}account/login`, model).pipe(map((response) => {
 
-      const user : UserDTO = <UserDTO>response;
-      
-      if(user)
-      {
-        localStorage.setItem('user',JSON.stringify(user));
+      const user: UserDTO = <UserDTO>response;
+      if (user) {
+        localStorage.setItem('user', JSON.stringify(user));
         this.currentUserSource.next(user);
       }
 
@@ -55,12 +52,12 @@ export class AccountService {
   logout()
   {
     localStorage.removeItem('user');
-    this.currentUserSource.next({} as UserDTO);
+    this.currentUserSource.next(null);
   }
 
   setCurrentUser(user:UserDTO)
   {
-    if(user != null && user.token !== null && user.token !== undefined && user.token !== '')
+    if (user != null && user.token !== null && user.token !== undefined && user.token !== '')
     {
       this.currentUserSource.next(user);
     }

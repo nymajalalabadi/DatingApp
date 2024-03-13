@@ -13,7 +13,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
         </li>
-  
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/members" routerLinkActive="active">Members</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
         </li>
@@ -21,23 +23,22 @@
 
 
       <div *ngIf="accountService.currentUser | async" class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           خوش آمدید
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <a class="dropdown-item" href="#">ویرایش پروفایل</a>
-          <a class="dropdown-item" href="#">خروج</a>
+          <a class="dropdown-item" (click)="logout()">خروج</a>
         </div>
       </div>
 
-      <form *ngIf="(accountService.currentUser | async) ==null" class="d-flex" (ngSubmit)="login()">
+      <form *ngIf="(accountService.currentUser | async) === null" class="d-flex" (ngSubmit)="login()">
         <input name="Email" [(ngModel)]="model.Email" class="form-control me-2" type="text" placeholder="Email"
-               aria-label="Email">
-        <input name="Password" [(ngModel)]="model.Password" class="form-control me-2" type="Password"
-               placeholder="Password" aria-label="Password">
-        <button class="btn btn-outline-success" type="submit">Login</button>
+          aria-label="email">
+        <input name="Password" [(ngModel)]="model.Password" class="form-control me-2" type="password"
+          placeholder="Password" aria-label="Password">
+        <button class="btn btn-outline-success" type="submit">ورود</button>
       </form>
     </div>
   </div>

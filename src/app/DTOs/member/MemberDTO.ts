@@ -3,10 +3,10 @@ import { PhotoDTO } from "../photo/PhotoDTO ";
 export interface MemberDTO 
 {
     id: number;
-    username: string;
+    userName: string;
     photoUrl: string;
     age: number;
-    knowAs: string;
+    knownAs: string;
     created: Date;
     lastActive: Date;
     gender: string;

@@ -4,12 +4,12 @@ import { map,ReplaySubject } from 'rxjs';
 import { MemberDTO } from '../DTOs/member/MemberDTO';
 
 
-const httpOptions = {
-  headers : new HttpHeaders
-  ({
-      Authorization : 'Beaber'+JSON.parse(localStorage.getItem('user')|| '{}').token
-  })
-}
+// const httpOptions = {
+//   headers : new HttpHeaders
+//   ({
+//       Authorization : 'Beaber'+JSON.parse(localStorage.getItem('user')|| '{}').token
+//   })
+// }
 
 @Injectable({
   providedIn: 'root'
@@ -25,12 +25,12 @@ export class MemberService
 
   getMembers()
   {
-    return this.httpClient.get<MemberDTO[]>(this.baseUrl+'users', httpOptions)
+    return this.httpClient.get<MemberDTO[]>(this.baseUrl+'user')
   }
 
   getMember(userName:string)
   {
-    return this.httpClient.get<MemberDTO>(this.baseUrl+'user/'+userName, httpOptions)
+    return this.httpClient.get<MemberDTO>(this.baseUrl+'user/'+userName)
   }
 
 }

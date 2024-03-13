@@ -6,7 +6,7 @@ import { error } from 'console';
 import { Observable } from 'rxjs';
 import { UserDTO } from '../DTOs/UserDTO';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import LoginDTO from '../DTOs/account/LoginDTO';
 
 
@@ -16,28 +16,26 @@ import LoginDTO from '../DTOs/account/LoginDTO';
   imports: [CommonModule, FormsModule, RouterOutlet, RouterModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
-  providers: [AccountService]
+  providers: [AccountService, ToastrService]
 })
 
 export class NavComponent implements OnInit {
   
-  model: LoginDTO = new LoginDTO;
+  model: LoginDTO  = new LoginDTO();
+  currentUser$: Observable<UserDTO> | undefined;
 
-  constructor(public accountService:AccountService, private router : Router)
-  {
-
+  constructor(public accountService: AccountService,private router:Router) {
   }
 
-  ngOnInit(): void 
-  {
+  ngOnInit(): void {
+    this.currentUser$=this.accountService.currentUser;
   }
 
-  login(){
-    this.accountService.login(this.model).subscribe(data =>
-    {
+  login() {
+    this.accountService.login(this.model).subscribe(data => {
       this.router.navigateByUrl('/members');
       console.log(data);
-    },error=>{
+    }, error => {
     });
   }
 
