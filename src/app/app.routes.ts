@@ -10,6 +10,8 @@ import { AuthGuard } from './_guards/auth.guard';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MemberCardComponent } from './members/member-card/member-card.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 export const routes: Routes = 
 [
@@ -38,7 +40,8 @@ export const routes: Routes =
         ToastrModule
     ],
     providers: [
-        ToastrService,
+        {provide : ToastrService},
+        {provide : HTTP_INTERCEPTORS, useClass : JwtInterceptor, multi : true}
     ]
 })
 
