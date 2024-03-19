@@ -1,15 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map,ReplaySubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { MemberDTO } from '../DTOs/member/MemberDTO';
 
-
-// const httpOptions = {
-//   headers : new HttpHeaders
-//   ({
-//       Authorization : 'Beaber'+JSON.parse(localStorage.getItem('user')|| '{}').token
-//   })
-// }
 
 @Injectable({
   providedIn: 'root'
