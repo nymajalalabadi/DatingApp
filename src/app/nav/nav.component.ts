@@ -24,14 +24,17 @@ export class NavComponent implements OnInit {
   model: LoginDTO  = new LoginDTO();
   currentUser$: Observable<UserDTO> | undefined;
 
-  constructor(public accountService: AccountService,private router:Router) {
+  constructor(public accountService: AccountService,private router:Router) 
+  {
   }
 
-  ngOnInit(): void {
-    this.currentUser$=this.accountService.currentUser;
+  ngOnInit(): void 
+  {
+    this.currentUser$ = this.accountService.currentUser;
   }
 
-  login() {
+  login() 
+  {
     this.accountService.login(this.model).subscribe(data => {
       this.router.navigateByUrl('/members');
       console.log(data);
@@ -39,7 +42,8 @@ export class NavComponent implements OnInit {
     });
   }
 
-  logout() {
+  logout() 
+  {
     this.accountService.logout();
     this.router.navigateByUrl('/');
   }
