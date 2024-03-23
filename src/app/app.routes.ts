@@ -17,8 +17,7 @@ export const routes: Routes =
 [
     { path: '', component: HomeComponent },
     { path: 'members', component: MemberListComponent },
-    { path: 'members', component: MemberCardComponent },
-    { path: 'members/:id', component: MemberDetailComponent },
+    { path: 'members/:username', component: MemberDetailComponent },
     { path: 'lists', component: ListsComponent },
     { path: 'messages', component: MessageComponent },
     { path: '**', component: HomeComponent, pathMatch: 'full' }
