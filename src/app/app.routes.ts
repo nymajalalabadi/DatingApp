@@ -12,12 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { EditMemberComponent } from './members/edit-member/edit-member.component';
 
 export const routes: Routes = 
 [
     { path: '', component: HomeComponent },
     { path: 'members', component: MemberListComponent },
     { path: 'members/:username', component: MemberDetailComponent },
+    { path: 'member/edit', component: EditMemberComponent},
     { path: 'lists', component: ListsComponent },
     { path: 'messages', component: MessageComponent },
     { path: '**', component: HomeComponent, pathMatch: 'full' }
