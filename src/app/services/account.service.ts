@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map,ReplaySubject } from 'rxjs';
 import { UserDTO } from '../DTOs/UserDTO';
 import LoginDTO from '../DTOs/account/LoginDTO';
+import { ResponseResult } from '../DTOs/common/ResponseResult';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,10 @@ export class AccountService {
   login(model: LoginDTO) {
     return this.httpClient.post(`${this.baseUrl}account/login`, model).pipe(map((response) => {
 
-      const user: UserDTO = <UserDTO>response;
+      var responseResult = <ResponseResult>response;
+
+      const user: UserDTO = <UserDTO>responseResult.data;
+
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUserSource.next(user);

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MemberDTO } from '../../DTOs/member/MemberDTO';
 import { UserDTO } from '../../DTOs/UserDTO';
 import { AccountService } from '../../services/account.service';
@@ -18,6 +18,8 @@ import { take } from 'rxjs';
 
 export class EditMemberComponent implements OnInit
 {
+  @ViewChild('editForm') editForm : NgForm
+
   member : MemberDTO;
   user : UserDTO;
 
@@ -36,10 +38,15 @@ export class EditMemberComponent implements OnInit
 
   LoadMember()
   {
-    this.memberService.getMember(this.user.username).subscribe(member => 
+    this.memberService.getMember(this.user.userName).subscribe(member => 
     {
       this.member = member;
     });
+  }
+
+  updateMember()
+  {
+
   }
 
 }
