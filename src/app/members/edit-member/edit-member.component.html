@@ -1,1 +1,71 @@
-<p>edit-member works!</p>
+<div class="row" *ngIf="member">
+    <div class="col-4">
+        <h1>Edit Profile</h1>
+    </div>
+    <div class="col-8">
+        <div class="alert alert-info">
+            <strong>Warning: </strong> You have made changes in the form, please save the form.
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.userName}}"
+                class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div>
+                    <strong>address : </strong>
+                    <p>{{member.city}}, {{member.country}}</p>
+                </div>
+                <div>
+                    <strong>age : </strong>
+                    <p>{{member.age}}</p>
+                </div>
+                <div>
+                    <strong>last active : </strong>
+                    <p>{{member.lastActive}}</p>
+                </div>
+                <div>
+                    <strong>creation date : </strong>
+                    <p>{{member.created}}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button [disabled]="!editForm.dirty" class="btn btn-success btn-block" type="submit" form="editForm">ذخیره تغییراتSave</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#aboutme"
+                    type="button" role="tab" aria-controls="home" aria-selected="true">User Profile</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="aboutme" role="tabpanel" aria-labelledby="home-tab">
+               <form #editForm="ngForm" id="editForm">
+                    <h4>Description</h4>
+                    <textarea name="introduction" [(ngModel)]="member.introduction" class="form-control" rows="6"></textarea>
+
+                    <h4 class="mt-2">looking For</h4>
+                    <textarea name="lookingFor" [(ngModel)]="member.lookingFor" class="form-control" rows="6"></textarea>
+                    
+                    <h4 class="mt-2">intrests</h4>
+                    <textarea name="intrests" [(ngModel)]="member.intrests" class="form-control" rows="6"></textarea>
+
+                    <h4 class="mt-2">آدرس</h4>
+                    <div class="form-inline">
+                        <label for="">شهر:</label>
+                        <input type="text" name="city" class="fomr-control mx-2">
+
+                        <label for="">کشور:</label>
+                        <input type="text" name="country" class="fomr-control mx-2">
+                    </div>
+               </form>
+            </div>
+        </div>
+    </div>
+</div>
+
