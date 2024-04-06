@@ -12,7 +12,8 @@ export class PreventUnsavedChangesGuard
   canDeactivate(component: EditMemberComponent): boolean 
   {
   
-    if(component.editForm.dirty){
+    if(component.editForm.dirty)
+    {
       return confirm('آیا از انجام کار مطمئن هستید؟');
     }
 

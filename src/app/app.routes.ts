@@ -13,13 +13,14 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { EditMemberComponent } from './members/edit-member/edit-member.component';
+import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-change.guard';
 
 export const routes: Routes = 
 [
     { path: '', component: HomeComponent },
-    { path: 'members', component: MemberListComponent },
+    { path: 'members', component: MemberListComponent, canActivate: [AuthGuard] },
     { path: 'members/:username', component: MemberDetailComponent },
-    { path: 'member/edit', component: EditMemberComponent},
+    { path: 'member/edit', component: EditMemberComponent, canDeactivate: [PreventUnsavedChangesGuard] },
     { path: 'lists', component: ListsComponent },
     { path: 'messages', component: MessageComponent },
     { path: '**', component: HomeComponent, pathMatch: 'full' }
