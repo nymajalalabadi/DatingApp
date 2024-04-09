@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { EditMemberComponent } from './members/edit-member/edit-member.component';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-change.guard';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 export const routes: Routes = 
 [
@@ -35,7 +36,8 @@ export const routes: Routes =
         RouterModule.forRoot(routes),
         ToastrModule.forRoot({
             positionClass :'toast-bottom-right'
-          })
+          }),
+          NgxSpinnerModule
     ],
     exports: [
         RouterModule,

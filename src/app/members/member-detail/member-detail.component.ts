@@ -5,12 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
-import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryModule, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 
 @Component({
   selector: 'app-member-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, NgxGalleryModule ],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.css',
   providers: [MemberService]
@@ -20,8 +19,8 @@ export class MemberDetailComponent implements OnInit
 {
   member : MemberDTO;
 
-  galleryOptions : NgxGalleryOptions[];
-  galleryImages : NgxGalleryImage[];
+  // galleryOptions : NgxGalleryOptions[];
+  // galleryImages : NgxGalleryImage[];
 
   constructor(private memberService : MemberService, private route : ActivatedRoute)
   {
@@ -32,14 +31,14 @@ export class MemberDetailComponent implements OnInit
   {
     this.LoadMember();
 
-    this.galleryOptions = [{
-      width: '500px',
-      height: '500px',
-      imagePercent: 100,
-      thumbnailsColumns: 4,
-      imageAnimation: NgxGalleryAnimation.Slide,
-      preview: false
-    }];
+    // this.galleryOptions = [{
+    //   width: '500px',
+    //   height: '500px',
+    //   imagePercent: 100,
+    //   thumbnailsColumns: 4,
+    //   imageAnimation: NgxGalleryAnimation.Slide,
+    //   preview: false
+    // }];
 
   }
 
@@ -64,7 +63,7 @@ export class MemberDetailComponent implements OnInit
     this.memberService.getMember(this.route.snapshot.paramMap.get('username')).subscribe(member => 
     {
       this.member = member;
-      this.galleryImages = this.getImages();
+      // this.galleryImages = this.getImages();
     })
   }
 
