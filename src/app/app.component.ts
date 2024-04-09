@@ -16,11 +16,12 @@ import { MessageComponent } from './message/message.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { EditMemberComponent } from './members/edit-member/edit-member.component';
+import { NgxSpinner, NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule,HttpClientModule ,FormsModule, CommonModule, NavComponent, HomeComponent, RegisterComponent, MemberDetailComponent, MemberListComponent, ListsComponent, MessageComponent, MemberCardComponent, EditMemberComponent],
+  imports: [RouterOutlet, RouterModule,HttpClientModule ,FormsModule, CommonModule, NavComponent, HomeComponent, RegisterComponent, MemberDetailComponent, MemberListComponent, ListsComponent, MessageComponent, MemberCardComponent, EditMemberComponent, NgxSpinnerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [AccountService]

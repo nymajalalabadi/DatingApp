@@ -15,6 +15,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { EditMemberComponent } from './members/edit-member/edit-member.component';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-change.guard';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 export const routes: Routes = 
 [
@@ -45,7 +46,8 @@ export const routes: Routes =
     ],
     providers: [
         {provide : ToastrService},
-        {provide : HTTP_INTERCEPTORS, useClass : JwtInterceptor, multi : true}
+        {provide : HTTP_INTERCEPTORS, useClass : JwtInterceptor, multi : true},
+        {provide : HTTP_INTERCEPTORS, useClass : LoadingInterceptor, multi : true}
     ]
 })
 
