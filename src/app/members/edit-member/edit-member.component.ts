@@ -46,7 +46,9 @@ export class EditMemberComponent implements OnInit
 
   updateMember()
   {
-
+    this.memberService.updateMember(this.member).subscribe(() => {
+      this.editForm.reset(this.member);
+    })
   }
 
 }

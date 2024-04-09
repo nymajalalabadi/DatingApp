@@ -25,4 +25,9 @@ export class MemberService
     return this.httpClient.get<MemberDTO>(this.baseUrl+'user/'+userName)
   }
 
+  updateMember(member:MemberDTO)
+  {
+    return this.httpClient.put(this.baseUrl+'user', member);
+  }
+
 }
