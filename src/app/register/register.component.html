@@ -4,14 +4,57 @@
             <h2 class="text-center text-primary">ثبت نام</h2>
             <hr>
             <div class="form-group mb-2">
-                <input type="text" class="form-control"  formControlName="email" placeholder="ایمیل" />
+                <input [class.is-invalid]='registerForm.get("email").errors && registerForm.get("email").touched' type="text"
+                class="form-control" formControlName="email" placeholder="ایمیل">
+                <div class="invalid-feedback">لطفا ایمیل را وارد کنید.</div>
             </div>
+
             <div class="form-group mb-2">
-                <input type="password" class="form-control"  formControlName="password" placeholder="کلمه عبور" />
-            </div>
-            <div class="form-group mb-2">
-                <input type="password" class="form-control"  formControlName="confirmPassword" placeholder="تکرار کلمه عبور" />
-            </div>
+                <input [class.is-invalid]='registerForm.get("password").errors && registerForm.get("password").touched'
+                  type="password" class="form-control" formControlName="password" placeholder="کلمه عبور">
+        
+                <div *ngIf="registerForm.get('password').hasError('required')" class="invalid-feedback">لطفا کلمه عبور را وارد
+                  کنید.
+                </div>
+        
+                <div *ngIf="registerForm.get('password').hasError('minlength')" class="invalid-feedback">حداقل طول کلمه عبور
+                  باید 4 کاراکتر باشد
+                </div>
+        
+                <div *ngIf="registerForm.get('password').hasError('maxlength')" class="invalid-feedback">حداکثر طول کلمه عبور
+                  باید 25 کاراکتر باشد
+                </div>
+              </div>
+        
+             <div class="form-group mb-2">
+        <input
+          [class.is-invalid]='registerForm.get("confirmPassword").errors && registerForm.get("confirmPassword").touched'
+          type="password" class="form-control" formControlName="confirmPassword" placeholder="تکرار کلمه عبور">
+
+        <div *ngIf="registerForm.get('confirmPassword').hasError('required')" class="invalid-feedback">لطفا تکرار کلمه
+          عبور را
+          وارد
+          کنید.
+        </div>
+
+        <div *ngIf="registerForm.get('confirmPassword').hasError('minlength')" class="invalid-feedback">حداقل طول تکرار
+          کلمه
+          عبور
+          باید 4 کاراکتر باشد
+        </div>
+
+        <div *ngIf="registerForm.get('confirmPassword').hasError('maxlength')" class="invalid-feedback">حداکثر طول تکرار
+          کلمه
+          عبور
+          باید 25 کاراکتر باشد
+        </div>
+
+        <div *ngIf="registerForm.get('confirmPassword').hasError('PasswordNoMatch')" class="invalid-feedback">کلمه
+          تکرار کلمه عبور با کلمه عبور یکسان نمی باشد.
+        </div>
+
+      </div>
+
             <div class="form-group text-center">
                 <button class="btn btn-success mr-2" type="submit">ثبت نام</button>
                 <button class="btn btn-default ml-10px" type="button" (click)="cansel()">لغو</button>
