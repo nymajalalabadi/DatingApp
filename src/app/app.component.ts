@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 import { UserDTO } from './DTOs/UserDTO';
@@ -21,7 +21,7 @@ import { NgxSpinner, NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule,HttpClientModule ,FormsModule, CommonModule, NavComponent, HomeComponent, RegisterComponent, MemberDetailComponent, MemberListComponent, ListsComponent, MessageComponent, MemberCardComponent, EditMemberComponent, NgxSpinnerModule],
+  imports: [RouterOutlet, RouterModule,HttpClientModule ,FormsModule,CommonModule, NavComponent, HomeComponent, RegisterComponent, MemberDetailComponent, MemberListComponent, ListsComponent, MessageComponent, MemberCardComponent, EditMemberComponent, NgxSpinnerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [AccountService]

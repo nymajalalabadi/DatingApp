@@ -16,6 +16,7 @@ import { EditMemberComponent } from './members/edit-member/edit-member.component
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-change.guard';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export const routes: Routes = 
 [
@@ -38,7 +39,8 @@ export const routes: Routes =
         ToastrModule.forRoot({
             positionClass :'toast-bottom-right'
           }),
-          NgxSpinnerModule
+          NgxSpinnerModule,
+          ReactiveFormsModule
     ],
     exports: [
         RouterModule,
