@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AccountService } from '../services/account.service';
-import RegisterDTO from '../DTOs/account/RegisterDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +14,10 @@ import RegisterDTO from '../DTOs/account/RegisterDTO';
 })
 export class RegisterComponent implements OnInit {
 
-  model : RegisterDTO = new RegisterDTO;
 
   registerForm: FormGroup;
 
-  constructor(private accountService:AccountService, private formBuilder: FormBuilder)
+  constructor(private accountService:AccountService, private formBuilder: FormBuilder, private router: Router)
   {
   }
 
@@ -30,9 +29,8 @@ export class RegisterComponent implements OnInit {
 
   register()
   {
-    this.accountService.register(this.model).subscribe(response => {
-      console.log(response);
-      this.cansel();
+    this.accountService.register(this.registerForm.value).subscribe(response => {
+      this.router.navigateByUrl('/members');
     },error => {
       console.log(error);
     });
