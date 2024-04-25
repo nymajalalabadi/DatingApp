@@ -30,4 +30,15 @@ export class MemberService
     return this.httpClient.put(this.baseUrl+'user', member);
   }
 
+  addLike(username: string) 
+  {
+    return this.httpClient.post(this.baseUrl + "like/" + username, {});
+  }
+
+  getlikes(predicate: string) 
+  {
+    return this.httpClient.get<Partial<MemberDTO[]>>(this.baseUrl + "like?predicate=" + predicate);
+  }
+
+
 }
