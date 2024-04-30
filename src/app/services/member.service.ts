@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { MemberDTO } from '../DTOs/member/MemberDTO';
+import { map } from 'rxjs';
+import { PaginationResult } from '../DTOs/pagination';
 
 
 @Injectable({
@@ -12,13 +14,34 @@ export class MemberService
 {
 
   baseUrl : string = "http://localhost:5250/api/";
+  
+  paginationResult: PaginationResult<MemberDTO[]> = new PaginationResult<MemberDTO[]>();
+
 
   constructor(private httpClient:HttpClient) { }
 
-  getMembers()
-  {
-    return this.httpClient.get<MemberDTO[]>(this.baseUrl+'user')
+  getMembers(page?: number, itemsPerPage?: number) {
+
+    let params = new HttpParams();
+
+    if (page !== null && itemsPerPage != null) {
+      params = params.append('pageNumber', page.toString());
+      params = params.append('pageSize', itemsPerPage.toString());
+    }
+
+    return this.httpClient.get<MemberDTO[]>(this.baseUrl + 'user', { observe: 'response', params }).pipe(
+      map(response => {
+        this.paginationResult.result = response.body;
+        if (response.headers.get('Pagination') !== null) {
+          this.paginationResult.pagination = JSON.parse(response.headers.get('Pagination'));
+        }
+
+        return this.paginationResult;
+      })
+    )
   }
+
+
 
   getMember(userName:string)
   {
