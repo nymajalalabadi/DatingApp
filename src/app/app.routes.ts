@@ -17,6 +17,7 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-change.gua
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
+import {PaginationModule} from 'ngx-bootstrap/pagination';
 
 export const routes: Routes = 
 [
@@ -40,7 +41,8 @@ export const routes: Routes =
             positionClass :'toast-bottom-right'
           }),
           NgxSpinnerModule,
-          ReactiveFormsModule
+          ReactiveFormsModule,
+          PaginationModule.forRoot()
     ],
     exports: [
         RouterModule,
