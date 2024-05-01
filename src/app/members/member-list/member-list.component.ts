@@ -1,3 +1,5 @@
+import { AccountService } from './../../services/account.service';
+import { UserDTO } from './../../DTOs/UserDTO';
 import { MemberCardComponent } from './../member-card/member-card.component';
 import { Component, OnInit } from '@angular/core';
 import { MemberDTO } from '../../DTOs/member/MemberDTO';
@@ -6,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Pagination } from '../../DTOs/pagination';
 import { PaginationComponent, PaginationModule } from 'ngx-bootstrap/pagination';
+import { UserParams } from '../../DTOs/userParams';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-member-list',
@@ -13,20 +17,22 @@ import { PaginationComponent, PaginationModule } from 'ngx-bootstrap/pagination'
   imports: [CommonModule, FormsModule, MemberCardComponent,PaginationModule],
   templateUrl: './member-list.component.html',
   styleUrl: './member-list.component.css',
-  providers: [MemberService]
+  providers: [MemberService, AccountService]
 })
 export class MemberListComponent implements OnInit
 {
 
   members: MemberDTO[] | undefined;
   pagination: Pagination;
-  pageNumber = 1;
-  pageSize = 5;
+  userParams : UserParams;
+  user : UserDTO
 
-
-  constructor(private memberService : MemberService)
+  constructor(private memberService : MemberService, private AccountService : AccountService)
   {
-
+    this.AccountService.currentUser.pipe(take(1)).subscribe(user => {
+      this.user = user;
+      this.userParams = new UserParams(user)
+    });
   }
 
   ngOnInit(): void 
@@ -35,14 +41,14 @@ export class MemberListComponent implements OnInit
   }
 
   loadMembers() {
-    this.memberService.getMembers(this.pageNumber, this.pageSize).subscribe(response => {
+    this.memberService.getMembers(this.userParams).subscribe(response => {
       this.members = response.result;
       this.pagination = response.pagination;
     })
   }
 
   pageChnaged(event: any) {
-    this.pageNumber = event.page;
+    this.userParams.pageSize = event.page;
     this.loadMembers();
   }
 

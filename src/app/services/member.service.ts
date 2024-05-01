@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { MemberDTO } from '../DTOs/member/MemberDTO';
 import { map } from 'rxjs';
 import { PaginationResult } from '../DTOs/pagination';
+import { UserParams } from '../DTOs/userParams';
 
 
 @Injectable({
@@ -20,14 +21,14 @@ export class MemberService
 
   constructor(private httpClient:HttpClient) { }
 
-  getMembers(page?: number, itemsPerPage?: number) {
+  getMembers(userParams: UserParams) 
+  {
 
-    let params = new HttpParams();
+    let params = this.getPaginationHeader(userParams.pageNumber, userParams.pageSize);
 
-    if (page !== null && itemsPerPage != null) {
-      params = params.append('pageNumber', page.toString());
-      params = params.append('pageSize', itemsPerPage.toString());
-    }
+    params = params.append('minAge', userParams.minAge.toString());
+    params = params.append('maxAge', userParams.maxAge.toString());
+    params = params.append('gender', userParams.gender);
 
     return this.httpClient.get<MemberDTO[]>(this.baseUrl + 'user', { observe: 'response', params }).pipe(
       map(response => {
@@ -41,7 +42,14 @@ export class MemberService
     )
   }
 
+  private getPaginationHeader(pageNumber: number, pageSize: number) 
+  {
+    let params = new HttpParams();
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
 
+    return params;
+  }
 
   getMember(userName:string)
   {

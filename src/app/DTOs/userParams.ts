@@ -3,7 +3,7 @@ import { UserDTO } from "./UserDTO";
 export class UserParams {
     gender: string;
     minAge = 18;
-    maxAge = 99;
+    maxAge = 150;
     pageNumber = 1;
     pageSize = 5;
 
