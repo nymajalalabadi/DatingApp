@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Pagination } from '../../DTOs/pagination';
 import { PaginationComponent, PaginationModule } from 'ngx-bootstrap/pagination';
-import { UserParams } from '../../DTOs/userParams';
+import { UserParams } from '../../DTOs/UserParams';
 import { take } from 'rxjs';
 
 @Component({
@@ -25,7 +25,8 @@ export class MemberListComponent implements OnInit
   members: MemberDTO[] | undefined;
   pagination: Pagination;
   userParams : UserParams;
-  user : UserDTO
+  user : UserDTO;
+  genderList = [{ value: 'male', display: 'مرد' }, { value: 'female', display: 'خانوم' }];
 
   constructor(private memberService : MemberService, private AccountService : AccountService)
   {
@@ -47,10 +48,14 @@ export class MemberListComponent implements OnInit
     })
   }
 
-  pageChnaged(event: any) {
-    this.userParams.pageSize = event.page;
+  resetFilters() {
+    this.userParams = new UserParams(this.user);
     this.loadMembers();
   }
 
 
+  pageChnaged(event: any) {
+    this.userParams.pageSize = event.page;
+    this.loadMembers();
+  }
 }

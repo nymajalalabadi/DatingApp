@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { MemberDTO } from '../DTOs/member/MemberDTO';
 import { map } from 'rxjs';
 import { PaginationResult } from '../DTOs/pagination';
-import { UserParams } from '../DTOs/userParams';
+import { UserParams } from '../DTOs/UserParams';
 
 
 @Injectable({
