@@ -25,7 +25,7 @@
                     <div class="col-12 col-md-3">
                         <div class="form-group">
                             <label>جنسیت:</label>
-                            <select name="gender" style="width: 70px;" class="form-control w-100 mt-2">
+                            <select name="gender" [(ngModel)]="userParams.gender" style="width: 70px;" class="form-control w-100 mt-2">
         
                                 <option *ngFor="let gender of genderList" [value]="gender.value">
                                     {{gender.display}}
